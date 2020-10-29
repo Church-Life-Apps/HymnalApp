@@ -1,21 +1,45 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, Avatar, Button, Icon, IconRegistry, Layout, MenuItem, OverflowMenu, Text, Toggle, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { StyleSheet, View, TextInput } from 'react-native';
+import { Input } from '@ui-kitten/components';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import Constants from "expo-constants";
+import HomePage from './views/HomePage';
+
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <IconRegistry icons={EvaIconsPack} />
+      <StatusBar backgroundColor="red" />
+      <ApplicationProvider {...eva} theme={eva.light} >
+        <StatusBar style="auto" />
+        <HomePage />
+      </ApplicationProvider>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  layout: {
     flex: 1,
-    backgroundColor: '#fff',
+    //justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
   },
+  textInput: {
+    paddingHorizontal: 20, fontSize: 15, color: '#ccccef',
+    paddingVertical: 10
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  logo: {
+    marginHorizontal: 16,
+  },
+  searchBar: {
+  }
 });
