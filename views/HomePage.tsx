@@ -8,23 +8,23 @@ import TopMenuBar from "../navigation/TopMenuBar";
 
 const HomePage = () => {
   var [hymnalNumber, setHymnalNumber] = useState<number>(1);
+  var [searchText, setSearchText] = useState<string>('1');
 
   const onNumberChange = (text) => {
-    setHymnalNumber(parseInt(text, 10));
+    setSearchText(text);
+    setHymnalNumber(isNaN(+text) ? hymnalNumber : +text);
   }
 
   return (
-    <Layout level='2' style={ styles.layout }>
-      <TopMenuBar />
-
+    <Layout level='3' style={ styles.layout }>
       <Input
         keyboardType="number-pad"
-        placeholder="HymnalNumber"
+        placeholder="Hymnal Number"
         style={styles.textInput}
         onChange={onNumberChange}
-        value={hymnalNumber.toString()}
+        value={searchText}
       />
-      <LyricViewer songNumber={1}/>
+      <LyricViewer songNumber={hymnalNumber}/>
     </Layout>
   )
 };

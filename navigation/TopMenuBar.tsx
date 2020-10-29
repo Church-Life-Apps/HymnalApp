@@ -3,9 +3,12 @@ import Constants from "expo-constants";
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
+interface TopMenuBarProps {
+  darkTheme: boolean,
+  setDarkTheme: (boolean) => void,
+}
 
-
-export default () => {
+const TopMenuBar: React.FC<TopMenuBarProps> = (props) => {
   const [menuVisible, setMenuVisible] = React.useState(false);
 
   const MenuIcon = (props) => (
@@ -26,12 +29,20 @@ export default () => {
 
   const renderOverflowMenuAction = () => (
     <React.Fragment>
-      <Toggle>lyrics</Toggle>
+      <Toggle
+          onChange={() => props.setDarkTheme(!props.darkTheme)}
+        >
+          Dark Mode
+        </Toggle>
       <OverflowMenu
         anchor={renderMenuAction}
         visible={menuVisible}
         onBackdropPress={toggleMenu}>
         <MenuItem accessoryLeft={SettingsIcon} title='Settings'/>
+        <MenuItem>
+
+        </MenuItem>
+
       </OverflowMenu>
     </React.Fragment>
   );
@@ -75,3 +86,5 @@ const styles = StyleSheet.create({
   searchBar: {
   }
 });
+
+export default TopMenuBar;

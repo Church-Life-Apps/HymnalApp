@@ -7,17 +7,22 @@ import { Input } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import Constants from "expo-constants";
 import HomePage from './views/HomePage';
+import TopMenuBar from './navigation/TopMenuBar';
 
 
 
 export default function App() {
+  let [darkTheme, setDarkTheme] = useState<boolean>(false);
+
   return (
     <>
       <IconRegistry icons={EvaIconsPack} />
       <StatusBar backgroundColor="red" />
-      <ApplicationProvider {...eva} theme={eva.light} >
+      <ApplicationProvider {...eva} theme={darkTheme ? eva.dark : eva.light} >
         <StatusBar style="auto" />
-        <HomePage />
+        <TopMenuBar darkTheme={darkTheme} setDarkTheme={setDarkTheme}/>
+
+        <HomePage/>
       </ApplicationProvider>
     </>
   );
