@@ -1,11 +1,14 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "homepage": "https://church-life-apps.github.io/HymnalApp",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "deploy": "gh-pages -d web-build",
+    "predeploy": "expo build:web"
   },
   "dependencies": {
     "@eva-design/eva": "^2.0.0",
@@ -18,6 +21,7 @@
     "@ui-kitten/eva-icons": "^5.0.0",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
+    "gh-pages": "^3.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
@@ -27,7 +31,8 @@
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
     "react-native-svg": "^12.1.0",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "expo-device": "~2.3.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

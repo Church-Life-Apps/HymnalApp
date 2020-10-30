@@ -50,8 +50,8 @@ export default function App() {
     <>
       <IconRegistry icons={EvaIconsPack} />
       <StatusBar backgroundColor="red" />
-      <ApplicationProvider {...eva} theme={colorScheme == 'dark' ? eva.dark : eva.light} >
-        <NavigationContainer theme={colorScheme == 'dark' ? DarkTheme : DefaultTheme}>
+      <ApplicationProvider {...eva} theme={eva.light} >
+        <NavigationContainer theme={DefaultTheme}>
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {

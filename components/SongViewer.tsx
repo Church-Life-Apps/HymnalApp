@@ -2,6 +2,7 @@ import { Toggle } from '@ui-kitten/components/ui';
 import React, { useState } from 'react';
 import { View, Image, Modal } from 'react-native';
 import ImageViewer from 'react-native-image-zoom-viewer';
+import * as Device from 'expo-device';
 
 const baseUrl = 'https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/';
 const hymnalPart = 'SongsAndHymnsOfLife/SHL_'; // This part can change when red book is added
@@ -45,19 +46,23 @@ const SongViewer: React.FC<SongViewProps> = (props) => {
           <Toggle checked={secondTune} onChange={() => setSecondTune(!secondTune)}></Toggle>
         </View>
       ) : null}
-
+      { Device.brand != null ? (
+            <Modal
+            visible={true}
+            transparent={true}
+            onRequestClose={() => props.setLyricsOnlyMode(true)}
+          >
+            <ImageViewer
+              onSwipeDown={() => props.setLyricsOnlyMode(true)}
+              enableSwipeDown={true} imageUrls={[ { url: url } ]}
+            />
+          </Modal>
+          ) : (
+            <Image source={{ uri: url }} />
+          )
+      }
       {/* image */}
-      <Modal
-        visible={true}
-        transparent={true}
-        onRequestClose={() => props.setLyricsOnlyMode(true)}
-      >
 
-        <ImageViewer
-          onSwipeDown={() => props.setLyricsOnlyMode(true)}
-          enableSwipeDown={true} imageUrls={[ { url: url } ]}
-        />
-      </Modal>
     </View>
   );
 };

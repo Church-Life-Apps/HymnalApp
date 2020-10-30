@@ -3,35 +3,40 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import LyricViewer from "../components/LyricViewer";
 import SongViewer from "../components/SongViewer";
+import * as Device from 'expo-device';
 
 const HomePage = () => {
   var [hymnalNumber, setHymnalNumber] = useState<number>(303);
   var [searchText, setSearchText] = useState<string>('303');
-  var [lyricsOnlyMode, setLyricsOnlyMode] = useState<boolean>(false);
+  var [lyricsOnlyMode, setLyricsOnlyMode] = useState<boolean>(true);
 
-  const onNumberChange = (text) => {
+  const onNumberChange = (text: string) => {
     setSearchText(text);
     setHymnalNumber(isNaN(+text) ? hymnalNumber : +text);
     console.log(text);
   }
 
   return (
-    <Layout level='3' style={ styles.layout }>
-      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center'}}>
+    <Layout level='2' style={ styles.layout }>
+      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
         <Input
           keyboardType="number-pad"
           placeholder="Hymnal Number"
-          style={{...styles.defaultMargin, flex: 3, marginRight: -10 }}
+          style={{...styles.defaultMargin, flex: 3 }}
           onChangeText={onNumberChange}
           value={searchText}
         />
+              { Device.brand != null ? (
         <Button
           onPress={() => {setLyricsOnlyMode(false)}}
           style={{...styles.defaultMargin, flex: 1 }}
           size='tiny'
-        >
-          Sheet Music
-        </Button>
+        >           Sheet Music
+        </Button>) : (
+          <></>
+        )
+        }
+
         {/*
         <Toggle
           checked={lyricsOnlyMode}

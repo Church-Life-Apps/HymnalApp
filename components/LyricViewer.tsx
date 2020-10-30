@@ -7,16 +7,10 @@ interface LyricViewProps {
   songNumber: number;
 }
 
-class HymnalData{
-  lyrics: string[];
-  author: string;
-  title: string;
-}
-
 const LyricViewer: React.FC<LyricViewProps> = (props) => {
   let url = `https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/SongsAndHymnsOfLifeLyrics/${props.songNumber}.json`;
   let { hymnalData, loading, error } = fetchHymnalData(url);
-
+  console.log(hymnalData);
   if (hymnalData == undefined) {
     return <Text category="h3">No Song Found</Text>;
   }
