@@ -17,11 +17,11 @@ const HomePage = () => {
 
   return (
     <Layout level='3' style={ styles.layout }>
-      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center'}}>
         <Input
           keyboardType="number-pad"
           placeholder="Hymnal Number"
-          style={{...styles.defaultMargin, flex: 3, marginRight: 0 }}
+          style={{...styles.defaultMargin, flex: 3, marginRight: -10 }}
           onChangeText={onNumberChange}
           value={searchText}
         />
@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   defaultMargin: {
-    margin: 10
+    marginHorizontal: 20,
+    marginVertical: 0
   },
   textInput: {
     //paddingHorizontal: 20, fontSize: 15, color: '#ccccef',
