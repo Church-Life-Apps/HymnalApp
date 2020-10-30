@@ -1,22 +1,22 @@
 {
   "files": {
-    "app.js": "/HymnalApp/static/js/app.840749f6.chunk.js",
-    "app.js.map": "/HymnalApp/static/js/app.840749f6.chunk.js.map",
+    "app.js": "/HymnalApp/static/js/app.6e7fde4c.chunk.js",
+    "app.js.map": "/HymnalApp/static/js/app.6e7fde4c.chunk.js.map",
     "runtime~app.js": "/HymnalApp/static/js/runtime~app.3ca9cf4d.js",
     "runtime~app.js.map": "/HymnalApp/static/js/runtime~app.3ca9cf4d.js.map",
-    "static/js/2.673c399c.chunk.js": "/HymnalApp/static/js/2.673c399c.chunk.js",
-    "static/js/2.673c399c.chunk.js.map": "/HymnalApp/static/js/2.673c399c.chunk.js.map",
+    "static/js/2.ac2b1d78.chunk.js": "/HymnalApp/static/js/2.ac2b1d78.chunk.js",
+    "static/js/2.ac2b1d78.chunk.js.map": "/HymnalApp/static/js/2.ac2b1d78.chunk.js.map",
     "favicon-16.png": "/HymnalApp/favicon-16.png",
     "favicon-32.png": "/HymnalApp/favicon-32.png",
     "favicon.ico": "/HymnalApp/favicon.ico",
     "index.html": "/HymnalApp/index.html",
     "manifest.json": "/HymnalApp/manifest.json",
     "serve.json": "/HymnalApp/serve.json",
-    "static/js/2.673c399c.chunk.js.LICENSE.txt": "/HymnalApp/static/js/2.673c399c.chunk.js.LICENSE.txt"
+    "static/js/2.ac2b1d78.chunk.js.LICENSE.txt": "/HymnalApp/static/js/2.ac2b1d78.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime~app.3ca9cf4d.js",
-    "static/js/2.673c399c.chunk.js",
-    "static/js/app.840749f6.chunk.js"
+    "static/js/2.ac2b1d78.chunk.js",
+    "static/js/app.6e7fde4c.chunk.js"
   ]
 }
