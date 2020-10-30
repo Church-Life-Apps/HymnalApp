@@ -1,26 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text } from '@ui-kitten/components';
 import { ScrollView } from 'react-native';
+import fetchHymnalData from '../hooks/useFetch';
 
 interface LyricViewProps {
   songNumber: number;
 }
 
+class HymnalData{
+  lyrics: string[];
+  author: string;
+  title: string;
+}
+
 const LyricViewer: React.FC<LyricViewProps> = (props) => {
-  var data;
-  var lyricFilePath = `../resources/Songs_&_Hymns_Of_Life/metadata/${props.songNumber}.json`;
-  try {
-    data = require('../resources/Songs_&_Hymns_Of_Life/metadata/303.json');
-  } catch {
-    return <Text category="h2">No Song Found</Text>;
+  let url = `https://raw.githubusercontent.com/Church-Life-Apps/Resources/master/SongsAndHymnsOfLifeLyrics/${props.songNumber}.json`;
+  let { hymnalData, loading, error } = fetchHymnalData(url);
+
+  if (hymnalData == undefined) {
+    return <Text category="h3">No Song Found</Text>;
   }
-  let lyrics = getLyrics(data);
+
   return (
     <>
-      <ScrollView style={{ marginVertical: 20, marginHorizontal: 40 }}>
-        <Text category="h2" style={{ marginBottom: 20 }}>{data['title']}</Text>
-        <Text>{lyrics}</Text>
-        <Text>Author: {data['author'] == '' ? 'Unknown' : data['author']}</Text>
+      <ScrollView style={{ marginVertical: 20, marginHorizontal: 25 }}>
+        <Text category="h5" style={{ textAlign: 'center', marginBottom: 20 }}>{hymnalData.title}</Text>
+        <Text>{getLyrics(hymnalData)}</Text>
+        <Text>Author: {hymnalData.author == '' ? 'Unknown' : hymnalData.author}</Text>
       </ScrollView>
     </>
   );
@@ -29,6 +35,10 @@ const LyricViewer: React.FC<LyricViewProps> = (props) => {
    * Parses all verse of the song to a string.
    */
   function getLyrics(data: any) {
+    if (!data) {
+      return "Loading"
+    }
+
     let verses = Object.keys(data['lyrics']);
     var lyrics = ``;
     verses.forEach((versenumber) => {
